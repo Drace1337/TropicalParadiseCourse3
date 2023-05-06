@@ -195,9 +195,107 @@ body {
 	&__text {
 		padding: 1em 0;
 	}
-    hr{
-        color: colors.$pure-white;
-    }
+	hr {
+		color: colors.$pure-white;
+	}
+}
+
+//ISLANDS
+.islands {
+	&__card {
+		position: relative;
+		margin: 1em 0;
+		height: 450px;
+		color: colors.$pure-white;
+		text-align: center;
+		perspective: 1000px;
+		&:hover {
+			.islands__card-img {
+				transform: rotateY(-180deg);
+				opacity: 0;
+			}
+			.islands__card-info {
+				transform: rotateY(0);
+				opacity: 1;
+			}
+		}
+		&-img {
+			padding: 2em;
+			height: 100%;
+			border-radius: 8px;
+			background-size: cover;
+			transition: transform 1s, opacity 1s;
+			&--first {
+				background-image: colors.$light-blue-gradient, url('../img/water-g17f380e0e_640.jpg');
+			}
+			&--second {
+				background-image: colors.$blue-gradient, url('../img/boat-g22109a374_640.jpg');
+			}
+			&--third {
+				background-image: colors.$purple-gradient, url('../img/hawaii-g6810467f1_640.jpg');
+			}
+			&-title {
+				font-family: 'Dancing Script', cursive;
+				font-size: 2.8rem;
+			}
+			&-info {
+				position: absolute;
+				bottom: 30px;
+				right: 30px;
+				font-size: 1.8rem;
+				i {
+					margin-right: 0.3rem;
+				}
+			}
+		}
+		&-info {
+			position: absolute;
+			top: 0;
+			bottom: 0;
+			left: 0;
+			right: 0;
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			background-image: colors.$light-blue-gradient-solid;
+			border-radius: 8px;
+			opacity: 0;
+			transform: rotateY(180deg);
+			transition: transform 1s, opacity 1s;
+			&-title {
+				@include mixins.islandCardStyles;
+				top: 1.2em;
+				font-family: 'Dancing Script', cursive;
+				font-size: 2.8rem;
+			}
+			&-list {
+				margin: 0 auto;
+				width: 70%;
+				list-style: none;
+				&-item {
+					padding: 1em;
+					font-size: 1.4rem;
+					border-bottom: 1px solid colors.$light-white;
+					&:last-child {
+						border-bottom: none;
+					}
+				}
+			}
+			&-btn {
+				@include mixins.islandCardStyles;
+				bottom: 2em;
+				padding: 1em;
+				border-radius: 8px;
+				width: 80%;
+				border: none;
+				background-color: colors.$green-color;
+				cursor: pointer;
+				&::before {
+					background-color: colors.$green-color-hover;
+				}
+			}
+		}
+	}
 }
 
 // =====================================================
@@ -250,17 +348,27 @@ body {
 			font-size: 1.8rem;
 		}
 	}
-    .hero-img{
-        padding: 30rem 2em;
-        hr{
-            margin: 0 auto;
-            width: 70%;
-            color: colors.$pure-white;
-        }
-        &__text{
-            font-size: 2.2rem;
-        }
-    }
+	.hero-img {
+		padding: 30rem 2em;
+		hr {
+			margin: 0 auto;
+			width: 70%;
+			color: colors.$pure-white;
+		}
+		&__text {
+			font-size: 2.2rem;
+		}
+	}
+	.islands {
+		&__cards {
+			display: flex;
+			justify-content: center;
+			flex-wrap: wrap;
+		}
+		&__card{
+			margin: 1em;width: 45%;
+		}
+	}
 }
 @media (min-width: 992px) {
 	.burger-btn {
@@ -296,16 +404,22 @@ body {
 			font-size: 2.2rem;
 		}
 	}
-    .hero-img{
-        padding: 40rem 2em;
-        background-image: colors.$blue-gradient, url('../img/hero-big.jpg');
-        &__title{
-            font-size: 7.2rem;
-        }
-        hr{
-            width: 60%;
-            min-width: 900px;
-        }
-    }
-
+	.hero-img {
+		padding: 40rem 2em;
+		background-image: colors.$blue-gradient, url('../img/hero-big.jpg');
+		&__title {
+			font-size: 7.2rem;
+		}
+		hr {
+			width: 60%;
+			min-width: 900px;
+		}
+	}
+}
+@media (min-width: 1100px){
+	.islands{
+		&__card{
+			width: 30%;
+		}
+	}
 }
